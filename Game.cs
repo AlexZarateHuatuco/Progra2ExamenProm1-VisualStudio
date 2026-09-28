@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace Progra2ExamenP1_VisualStudio
 {
-    internal class Juego
+    internal class Game
     {
         int oro = 0;
-        //List<Torre> torresConstruidas = new List<Torre>();
+        public int Oro
+        {
+            get { return oro; }
+            set { oro = value; }
+        }
+        List<Tower> torresConstruidas = new List<Tower>();
         public void Execute()
         {
             Console.WriteLine("Bienvenido al juego de torres de defensa.");
@@ -75,7 +80,6 @@ namespace Progra2ExamenP1_VisualStudio
         }
         void MostrarTorresConstruidas()
         {
-            /*
             if (torresConstruidas.Count == 0)
             {
                 Console.WriteLine("No hay torres construidas.");
@@ -88,13 +92,12 @@ namespace Progra2ExamenP1_VisualStudio
                     Console.WriteLine($"Torre {i}: {torresConstruidas[i].Nombre}, Nivel: {torresConstruidas[i].Nivel}, Daño: {torresConstruidas[i].Daño}");
                 }
             }
-            */
         }
         void ConstruirTorrePequeña()
         {
             if(oro >= 100)
             {
-                //torresConstruidas.Add(new TorrePequeña());
+                torresConstruidas.Add(new SmallTower());
                 oro -= 100;
             }
 
@@ -103,13 +106,12 @@ namespace Progra2ExamenP1_VisualStudio
         {
             if(oro >= 200)
             {
-                //torresConstruidas.Add(new TorreFuerte());
+                torresConstruidas.Add(new BuffTower());
                 oro -= 200;
             }
         }
         void DestruirTorre()
         {
-            /*
             Console.WriteLine("Que torre deseas destruir?");
             for (int i = 0; i < torresConstruidas.Count; i++)
             {
@@ -125,7 +127,6 @@ namespace Progra2ExamenP1_VisualStudio
             {
                 Console.WriteLine("Opción inválida.");
             }
-            */
         }
     }
 }
