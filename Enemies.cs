@@ -8,17 +8,16 @@ namespace Progra2ExamenP1_VisualStudio
 {
     internal class Enemies : Entities
     {
-        Game juego;
         private bool estaVivo;
         private bool yaImprimiMuerte;
         private int vecesQueRecibioDaño;
-        public Enemies(int vidaMaxima, int daño) : base(vidaMaxima, daño)
+        public Enemies() : base()
         {
             this.estaVivo = true;
             this.yaImprimiMuerte = false;
             this.vecesQueRecibioDaño = 0;
 
-            Console.WriteLine("Se creo un enemigo con " + vidaMaxima + " de vida y " + daño + " de daño");
+            Console.WriteLine("Se creo un enemigo con " + VidaMaxima + " de vida y " + Daño + " de daño");
         }
         public override void Atacar()
         {
@@ -79,7 +78,7 @@ namespace Progra2ExamenP1_VisualStudio
             }
             else if (this.VidaActual == 0)
             {
-                juego.Oro += 10;
+                Game.Instance.Oro += 10;
                 return false;
             }
             else
