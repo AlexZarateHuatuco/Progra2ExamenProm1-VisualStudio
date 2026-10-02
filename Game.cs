@@ -10,8 +10,7 @@ namespace Progra2ExamenP1_VisualStudio
     {
         private static readonly Game instance = new Game();
         public static Game Instance => instance;
-
-        int oro = 0;
+        int oro = 300;
         public int Oro
         {
             get { return oro; }
@@ -83,7 +82,6 @@ namespace Progra2ExamenP1_VisualStudio
                         break;
                 }
             }
-            AbrirMenu();
         }
         void MostrarTorresConstruidas()
         {
@@ -143,7 +141,6 @@ namespace Progra2ExamenP1_VisualStudio
             }
             Entities enemigo = new Entities(ObtenerValorFibonacciAleatorio(), ObtenerValorFibonacciAleatorio());
             enemigo.Atacar();
-            Console.WriteLine("El enemigo ataca a la torre màs cercana y hace " + enemigo.Daño + " de daño.");
         }
         public int ObtenerValorFibonacciAleatorio()
         {
