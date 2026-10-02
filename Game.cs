@@ -178,7 +178,8 @@ namespace Progra2ExamenP1_VisualStudio
                     enemigo.Atacar();
                 }
             }
-            enemigos.RemoveAll(enemigo => enemigo.EstaVivo() == false);
+            Console.WriteLine("Turno del Jugador.");
+            Console.WriteLine("----------------------------------------");
 
             Console.WriteLine("Turno del Jugador.");
             Console.WriteLine("----------------------------------------");
