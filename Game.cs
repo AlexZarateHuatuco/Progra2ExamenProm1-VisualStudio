@@ -8,6 +8,9 @@ namespace Progra2ExamenP1_VisualStudio
 {
     internal class Game
     {
+        private static readonly Game instance = new Game();
+        public static Game Instance => instance;
+
         int oro = 0;
         public int Oro
         {
@@ -99,7 +102,7 @@ namespace Progra2ExamenP1_VisualStudio
         }
         void ConstruirTorrePequeña()
         {
-            if(oro >= 100)
+            if (oro >= 100)
             {
                 torresConstruidas.Add(new SmallTower());
                 oro -= 100;
@@ -108,7 +111,7 @@ namespace Progra2ExamenP1_VisualStudio
         }
         void ConstruirTorreFuerte()
         {
-            if(oro >= 200)
+            if (oro >= 200)
             {
                 torresConstruidas.Add(new BuffTower());
                 oro -= 200;
