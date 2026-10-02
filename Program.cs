@@ -10,8 +10,7 @@ namespace Progra2ExamenP1_VisualStudio
     {
         static void Main(string[] args)
         {
-            Juego juego = new Juego();
-            juego.Execute();
+            Game.Instance.Execute();
         }
     }
 }
