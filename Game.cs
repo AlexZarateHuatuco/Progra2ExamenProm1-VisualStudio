@@ -30,6 +30,7 @@ namespace Progra2ExamenP1_VisualStudio
                 Console.WriteLine("1. Abrir Tienda.");
                 Console.WriteLine("2. Mostrar Torres ya construidas.");
                 Console.WriteLine("3. Destruir Torre.");
+                Console.WriteLine("4. Terminar Turno.");
                 int option = int.Parse(Console.ReadLine());
                 switch (option)
                 {
@@ -41,6 +42,9 @@ namespace Progra2ExamenP1_VisualStudio
                         break;
                     case 3:
                         DestruirTorre();
+                        break;
+                    case 4:
+                        TerminarTurno();
                         break;
                     default:
                         Console.WriteLine("Opción inválida.");
@@ -126,6 +130,13 @@ namespace Progra2ExamenP1_VisualStudio
             else
             {
                 Console.WriteLine("Opción inválida.");
+            }
+        }
+        void TerminarTurno()
+        {
+            foreach (Tower torre in torresConstruidas)
+            {
+                //torre.AtacarEnemigoActual();
             }
         }
     }
