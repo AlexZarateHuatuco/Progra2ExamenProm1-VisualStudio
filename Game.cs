@@ -83,7 +83,6 @@ namespace Progra2ExamenP1_VisualStudio
                         break;
                 }
             }
-            AbrirMenu();
         }
         void MostrarTorresConstruidas()
         {
