@@ -10,6 +10,8 @@ namespace Progra2ExamenP1_VisualStudio
     {
         protected string nombreTorre;
         protected int nivel;
+        public int Nivel { get { return nivel; } }
+        public string Nombre { get { return nombreTorre; } }
 
         public Tower(string nombre, int vida, int daño) : base(vida, daño)
         {

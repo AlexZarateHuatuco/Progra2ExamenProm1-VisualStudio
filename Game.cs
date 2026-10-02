@@ -9,6 +9,11 @@ namespace Progra2ExamenP1_VisualStudio
     internal class Game
     {
         int oro = 0;
+        public int Oro
+        {
+            get { return oro; }
+            set { oro = value; }
+        }
         List<Tower> torresConstruidas = new List<Tower>();
         public void Execute()
         {

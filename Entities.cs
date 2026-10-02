@@ -13,6 +13,7 @@ namespace Progra2ExamenP1_VisualStudio
         public int VidaMaxima { get; private set; }
         public int VidaActual { get; set; }
         protected int daño;
+        public int Daño { get; private set; }
 
         public Entities(int vidaMaxima, int daño)
         {
