@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Progra2ExamenP1_VisualStudio
 {
-    internal class Juego
+    internal class Game
     {
         int oro = 0;
         List<Tower> torresConstruidas = new List<Tower>();
