@@ -16,11 +16,15 @@ namespace Progra2ExamenP1_VisualStudio
             get { return oro; }
             set { oro = value; }
         }
-        List<Enemies> enemigos = new List<Enemies>();
+        public List<Enemies> enemigos = new List<Enemies>();
         public List<Tower> torresConstruidas = new List<Tower>();
         public void Execute()
         {
             Console.WriteLine("Bienvenido al juego de torres de defensa.");
+            for (int i = 0; i < enemigos.Count; i++)
+            {
+                Console.WriteLine($"Enemigo {i}: Vida: {enemigos[i].VidaMaxima}, Daño: {enemigos[i].Daño}");
+            }
             AbrirMenu();
             enemigos.Add(new Enemies());
             enemigos.Add(new Enemies());
@@ -69,8 +73,8 @@ namespace Progra2ExamenP1_VisualStudio
                 Console.WriteLine("Abriendo tienda...");
                 Console.WriteLine($"Oro disponible: {oro}");
                 Console.WriteLine("Que deseas hacer?");
-                Console.WriteLine("1. Torre Pequeña.");
-                Console.WriteLine("2. Torre Fuerte.");
+                Console.WriteLine("1. Torre Pequeña.   $100");
+                Console.WriteLine("2. Torre Fuerte.   $200");
                 Console.WriteLine("3. Cerrar Tienda.");
                 int option = int.Parse(Console.ReadLine());
                 switch (option)
@@ -145,18 +149,47 @@ namespace Progra2ExamenP1_VisualStudio
         }
         void TerminarTurno()
         {
+            Console.WriteLine("----------------------------------------");
             Console.WriteLine("Turno de las torres.");
+
             foreach (Tower torre in torresConstruidas)
             {
-                torre.Atacar();
+                Enemies objetivo = ObtenerEnemigoObjetivo();
+
+                if (objetivo != null)
+                {
+                    torre.Atacar(objetivo);
+                }
+                else
+                {
+                    Console.WriteLine($"{torre.Nombre} no tiene enemigos vivos en el mapa para atacar.");
+                    break;
+                }
             }
+
             Console.WriteLine("Turno del enemigo.");
             foreach (Enemies enemigo in enemigos)
             {
-                enemigo.Atacar();
+                if (enemigo.EstaVivo())
+                {
+                    enemigo.Atacar();
+                }
             }
-            Console.WriteLine("Turno del Jugador.");
+            enemigos.RemoveAll(enemigo => enemigo.EstaVivo() == false);
 
+            Console.WriteLine("Turno del Jugador.");
+            Console.WriteLine("----------------------------------------");
+        }
+        private Enemies ObtenerEnemigoObjetivo()
+        {
+            foreach (Enemies enemigo in enemigos)
+            {
+                if (enemigo.EstaVivo())
+                {
+                    return enemigo;
+                }
+            }
+            return null;
         }
     }
 }
