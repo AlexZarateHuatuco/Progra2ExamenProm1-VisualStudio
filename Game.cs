@@ -10,15 +10,14 @@ namespace Progra2ExamenP1_VisualStudio
     {
         private static readonly Game instance = new Game();
         public static Game Instance => instance;
-
         int oro = 300;
         public int Oro
         {
             get { return oro; }
             set { oro = value; }
         }
-        List<Tower> torresConstruidas = new List<Tower>();
         List<Enemies> enemigos = new List<Enemies>();
+        public List<Tower> torresConstruidas = new List<Tower>();
         public void Execute()
         {
             Console.WriteLine("Bienvenido al juego de torres de defensa.");
