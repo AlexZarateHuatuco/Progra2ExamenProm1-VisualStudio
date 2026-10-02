@@ -21,10 +21,13 @@ namespace Progra2ExamenP1_VisualStudio
         }
         public override void Atacar()
         {
-            if (Game.Instance.torresConstruidas.Count >= 0)
+            
+            if (Game.Instance.torresConstruidas.Count > 0)
             {
-                Console.WriteLine("El enemigo ataca a la torre màs cercana y hace " + this.daño + " de daño.");
-                return;
+                Tower objetivo = Game.Instance.torresConstruidas[0];
+                Console.WriteLine("El enemigo ataca a " + objetivo.Nombre + " y hace " + this.daño + " de daño.");
+
+                objetivo.RecibirDaño(this.daño);
             }
             else
             {
