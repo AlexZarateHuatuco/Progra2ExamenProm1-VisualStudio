@@ -37,6 +37,7 @@ namespace Progra2ExamenP1_VisualStudio
                 Console.WriteLine("2. Mostrar Torres ya construidas.");
                 Console.WriteLine("3. Destruir Torre.");
                 Console.WriteLine("4. Terminar Turno.");
+                Console.WriteLine("5. Salir del juego.");
                 int option = int.Parse(Console.ReadLine());
                 switch (option)
                 {
@@ -51,6 +52,9 @@ namespace Progra2ExamenP1_VisualStudio
                         break;
                     case 4:
                         TerminarTurno();
+                        break;
+                    case 5:
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Opción inválida.");
