@@ -8,22 +8,27 @@ namespace Progra2ExamenP1_VisualStudio
 {
     internal class Enemies : Entities
     {
-        Game juego;
         private bool estaVivo;
         private bool yaImprimiMuerte;
         private int vecesQueRecibioDaño;
-        public Enemies(int vidaMaxima, int daño) : base(vidaMaxima, daño)
+        public Enemies() : base()
         {
             this.estaVivo = true;
             this.yaImprimiMuerte = false;
             this.vecesQueRecibioDaño = 0;
 
-            Console.WriteLine("Se creo un enemigo con " + vidaMaxima + " de vida y " + daño + " de daño");
+            Console.WriteLine("Se creo un enemigo con " + VidaMaxima + " de vida y " + Daño + " de daño");
         }
         public override void Atacar()
         {
             //jugador.VidaActual = jugador.VidaActual - this.daño;
             //Tower.RecibirDaño(Daño);
+            if (Game.Instance.torresConstruidas.Count == 0)
+            {
+                Console.WriteLine("El enemigo ataca a la torre màs cercana y hace " + this.daño + " de daño.");
+                return;
+            }
+            Console.WriteLine("El enemigo ataca al jugador y hace " + this.daño + " de daño.");
         }
         public override void RecibirDaño(int cantidad)
         {
@@ -79,7 +84,7 @@ namespace Progra2ExamenP1_VisualStudio
             }
             else if (this.VidaActual == 0)
             {
-                juego.Oro += 10;
+                Game.Instance.Oro += 10;
                 return false;
             }
             else

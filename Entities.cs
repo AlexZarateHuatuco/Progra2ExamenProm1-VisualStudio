@@ -8,19 +8,23 @@ namespace Progra2ExamenP1_VisualStudio
 {
     internal class Entities
     {
-        private int vidaMaxima;
-        private int vidaActual;
-        public int VidaMaxima { get; private set; }
-        public int VidaActual { get; set; }
-        protected int daño;
-        public int Daño { get; private set; }
+        private static readonly Random rnd = new Random();
+        public int VidaMaxima { get; }
+        protected readonly int daño;
+        public int Daño => daño;
+        public int VidaActual { get; protected set; }
 
-        public Entities(int vidaMaxima, int daño)
+        public Entities()
         {
-            this.vidaMaxima = ObtenerValorFibonacciAleatorio();
-            this.vidaActual = this.vidaMaxima;
+            VidaMaxima = ObtenerValorFibonacciAleatorio();
+            VidaActual = VidaMaxima;
+            daño = ObtenerValorFibonacciAleatorio();
+        }
+        public Entities()
+        {
+            this.VidaMaxima = ObtenerValorFibonacciAleatorio();
+            this.VidaActual = this.vidaMaxima;
             this.daño = ObtenerValorFibonacciAleatorio();
-            
         }
         public virtual void Atacar()
         {
@@ -35,7 +39,7 @@ namespace Progra2ExamenP1_VisualStudio
         {
             // ...
         }
-        private int ObtenerValorFibonacciAleatorio()
+        public int ObtenerValorFibonacciAleatorio()
         {
             int numTerminos = 12;
             List<int> fibonacci = GenerarFibonacci(numTerminos);
@@ -43,7 +47,7 @@ namespace Progra2ExamenP1_VisualStudio
             int valRandom = rnd.Next(2, numTerminos); // Rango entre índice 2 y 11
             return fibonacci[valRandom];
         }
-        private List<int> GenerarFibonacci(int n)
+        public List<int> GenerarFibonacci(int n)
         {
             List<int> fibonacci = new List<int>();
             int a = 0;

@@ -8,17 +8,22 @@ namespace Progra2ExamenP1_VisualStudio
 {
     internal class Game
     {
-        int oro = 0;
+        private static readonly Game instance = new Game();
+        public static Game Instance => instance;
+        int oro = 300;
         public int Oro
         {
             get { return oro; }
             set { oro = value; }
         }
-        List<Tower> torresConstruidas = new List<Tower>();
+        List<Enemies> enemigos = new List<Enemies>();
+        public List<Tower> torresConstruidas = new List<Tower>();
         public void Execute()
         {
             Console.WriteLine("Bienvenido al juego de torres de defensa.");
             AbrirMenu();
+            enemigos.Add(new Enemies());
+            enemigos.Add(new Enemies());
         }
         void AbrirMenu()
         {
@@ -31,6 +36,7 @@ namespace Progra2ExamenP1_VisualStudio
                 Console.WriteLine("2. Mostrar Torres ya construidas.");
                 Console.WriteLine("3. Destruir Torre.");
                 Console.WriteLine("4. Terminar Turno.");
+                Console.WriteLine("5. Salir del juego.");
                 int option = int.Parse(Console.ReadLine());
                 switch (option)
                 {
@@ -46,6 +52,9 @@ namespace Progra2ExamenP1_VisualStudio
                     case 4:
                         TerminarTurno();
                         break;
+                    case 5:
+                        Environment.Exit(0);
+                        break;
                     default:
                         Console.WriteLine("Opción inválida.");
                         break;
@@ -58,6 +67,7 @@ namespace Progra2ExamenP1_VisualStudio
             while (ContinueFlag)
             {
                 Console.WriteLine("Abriendo tienda...");
+                Console.WriteLine($"Oro disponible: {oro}");
                 Console.WriteLine("Que deseas hacer?");
                 Console.WriteLine("1. Torre Pequeña.");
                 Console.WriteLine("2. Torre Fuerte.");
@@ -80,7 +90,6 @@ namespace Progra2ExamenP1_VisualStudio
                         break;
                 }
             }
-            AbrirMenu();
         }
         void MostrarTorresConstruidas()
         {
@@ -99,19 +108,21 @@ namespace Progra2ExamenP1_VisualStudio
         }
         void ConstruirTorrePequeña()
         {
-            if(oro >= 100)
+            if (oro >= 100)
             {
                 torresConstruidas.Add(new SmallTower());
                 oro -= 100;
+                Console.WriteLine($"Oro disponible: {oro}");
             }
 
         }
         void ConstruirTorreFuerte()
         {
-            if(oro >= 200)
+            if (oro >= 200)
             {
                 torresConstruidas.Add(new BuffTower());
                 oro -= 200;
+                Console.WriteLine($"Oro disponible: {oro}");
             }
         }
         void DestruirTorre()
@@ -134,10 +145,18 @@ namespace Progra2ExamenP1_VisualStudio
         }
         void TerminarTurno()
         {
+            Console.WriteLine("Turno de las torres.");
             foreach (Tower torre in torresConstruidas)
             {
-                //torre.AtacarEnemigoActual();
+                torre.Atacar();
             }
+            Console.WriteLine("Turno del enemigo.");
+            foreach (Enemies enemigo in enemigos)
+            {
+                enemigo.Atacar();
+            }
+            Console.WriteLine("Turno del Jugador.");
+
         }
     }
 }
