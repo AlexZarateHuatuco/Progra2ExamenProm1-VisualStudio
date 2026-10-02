@@ -17,7 +17,7 @@ namespace Progra2ExamenP1_VisualStudio
             get { return oro; }
             set { oro = value; }
         }
-        List<Tower> torresConstruidas = new List<Tower>();
+        public List<Tower> torresConstruidas = new List<Tower>();
         public void Execute()
         {
             Console.WriteLine("Bienvenido al juego de torres de defensa.");
@@ -141,6 +141,31 @@ namespace Progra2ExamenP1_VisualStudio
             {
                 //torre.AtacarEnemigoActual();
             }
+            Entities enemigo = new Entities(ObtenerValorFibonacciAleatorio(), ObtenerValorFibonacciAleatorio());
+            enemigo.Atacar();
+            Console.WriteLine("El enemigo ataca a la torre màs cercana y hace " + enemigo.Daño + " de daño.");
+        }
+        public int ObtenerValorFibonacciAleatorio()
+        {
+            int numTerminos = 12;
+            List<int> fibonacci = GenerarFibonacci(numTerminos);
+            Random rnd = new Random();
+            int valRandom = rnd.Next(2, numTerminos); // Rango entre índice 2 y 11
+            return fibonacci[valRandom];
+        }
+        public List<int> GenerarFibonacci(int n)
+        {
+            List<int> fibonacci = new List<int>();
+            int a = 0;
+            int b = 1;
+            for (int i = 0; i < n; i++)
+            {
+                fibonacci.Add(a);
+                int temp = a;
+                a = b;
+                b = temp + b;
+            }
+            return fibonacci;
         }
     }
 }

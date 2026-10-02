@@ -24,6 +24,12 @@ namespace Progra2ExamenP1_VisualStudio
         {
             //jugador.VidaActual = jugador.VidaActual - this.daño;
             //Tower.RecibirDaño(Daño);
+            if (Game.Instance.torresConstruidas.Count == 0)
+            {
+                Console.WriteLine("El enemigo ataca a la torre màs cercana y hace " + this.daño + " de daño.");
+                return;
+            }
+            Console.WriteLine("El enemigo ataca al jugador y hace " + this.daño + " de daño.");
         }
         public override void RecibirDaño(int cantidad)
         {
