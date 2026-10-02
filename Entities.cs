@@ -35,10 +35,10 @@ namespace Progra2ExamenP1_VisualStudio
         }
         public int ObtenerValorFibonacciAleatorio()
         {
-            int numTerminos = 12;
+            int numTerminos = 13;
             List<int> fibonacci = GenerarFibonacci(numTerminos);
             Random rnd = new Random();
-            int valRandom = rnd.Next(2, numTerminos); // Rango entre índice 2 y 11
+            int valRandom = rnd.Next(12, numTerminos); // Rango entre índice 12 y 13
             return fibonacci[valRandom];
         }
         public List<int> GenerarFibonacci(int n)
