@@ -136,7 +136,7 @@ namespace Progra2ExamenP1_VisualStudio
         {
             foreach (Tower torre in torresConstruidas)
             {
-                torre.AtacarEnemigoActual();
+                //torre.AtacarEnemigoActual();
             }
         }
     }
