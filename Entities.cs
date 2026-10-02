@@ -8,19 +8,17 @@ namespace Progra2ExamenP1_VisualStudio
 {
     internal class Entities
     {
-        private int vidaMaxima;
-        private int vidaActual;
-        public int VidaMaxima { get; private set; }
-        public int VidaActual { get; set; }
-        protected int daño;
-        public int Daño { get; private set; }
+        private static readonly Random rnd = new Random();
+        public int VidaMaxima { get; }
+        protected readonly int daño;
+        public int Daño => daño;
+        public int VidaActual { get; protected set; }
 
-        public Entities(int vidaMaxima, int daño)
+        public Entities()
         {
-            this.VidaMaxima = vidaMaxima; 
-            this.VidaActual = vidaMaxima;
-            this.daño = daño;
-            
+            VidaMaxima = ObtenerValorFibonacciAleatorio();
+            VidaActual = VidaMaxima;
+            daño = ObtenerValorFibonacciAleatorio();
         }
         public Entities()
         {

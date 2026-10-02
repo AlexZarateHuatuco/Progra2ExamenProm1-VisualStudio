@@ -16,11 +16,14 @@ namespace Progra2ExamenP1_VisualStudio
             get { return oro; }
             set { oro = value; }
         }
+        List<Enemies> enemigos = new List<Enemies>();
         public List<Tower> torresConstruidas = new List<Tower>();
         public void Execute()
         {
             Console.WriteLine("Bienvenido al juego de torres de defensa.");
             AbrirMenu();
+            enemigos.Add(new Enemies());
+            enemigos.Add(new Enemies());
         }
         void AbrirMenu()
         {
@@ -60,6 +63,7 @@ namespace Progra2ExamenP1_VisualStudio
             while (ContinueFlag)
             {
                 Console.WriteLine("Abriendo tienda...");
+                Console.WriteLine($"Oro disponible: {oro}");
                 Console.WriteLine("Que deseas hacer?");
                 Console.WriteLine("1. Torre Pequeña.");
                 Console.WriteLine("2. Torre Fuerte.");
@@ -104,6 +108,7 @@ namespace Progra2ExamenP1_VisualStudio
             {
                 torresConstruidas.Add(new SmallTower());
                 oro -= 100;
+                Console.WriteLine($"Oro disponible: {oro}");
             }
 
         }
@@ -113,6 +118,7 @@ namespace Progra2ExamenP1_VisualStudio
             {
                 torresConstruidas.Add(new BuffTower());
                 oro -= 200;
+                Console.WriteLine($"Oro disponible: {oro}");
             }
         }
         void DestruirTorre()
@@ -135,34 +141,18 @@ namespace Progra2ExamenP1_VisualStudio
         }
         void TerminarTurno()
         {
+            Console.WriteLine("Turno de las torres.");
             foreach (Tower torre in torresConstruidas)
             {
-                //torre.AtacarEnemigoActual();
+                torre.Atacar();
             }
-            Entities enemigo = new Entities(ObtenerValorFibonacciAleatorio(), ObtenerValorFibonacciAleatorio());
-            enemigo.Atacar();
-        }
-        public int ObtenerValorFibonacciAleatorio()
-        {
-            int numTerminos = 12;
-            List<int> fibonacci = GenerarFibonacci(numTerminos);
-            Random rnd = new Random();
-            int valRandom = rnd.Next(2, numTerminos); // Rango entre índice 2 y 11
-            return fibonacci[valRandom];
-        }
-        public List<int> GenerarFibonacci(int n)
-        {
-            List<int> fibonacci = new List<int>();
-            int a = 0;
-            int b = 1;
-            for (int i = 0; i < n; i++)
+            Console.WriteLine("Turno del enemigo.");
+            foreach (Enemies enemigo in enemigos)
             {
-                fibonacci.Add(a);
-                int temp = a;
-                a = b;
-                b = temp + b;
+                enemigo.Atacar();
             }
-            return fibonacci;
+            Console.WriteLine("Turno del Jugador.");
+
         }
     }
 }

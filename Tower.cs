@@ -13,7 +13,7 @@ namespace Progra2ExamenP1_VisualStudio
         public int Nivel { get { return nivel; } }
         public string Nombre { get { return nombreTorre; } }
 
-        public Tower(string nombre, int vida, int daño) : base(vida, daño)
+        public Tower(string nombre, int vida, int daño) : base()
         {
             this.nombreTorre = nombre;
             this.nivel = 1;
@@ -55,7 +55,7 @@ namespace Progra2ExamenP1_VisualStudio
             Console.WriteLine($"Costo: {costo} oro (Escalado Fibonacci Nivel {nivel + 1})");
 
             nivel++;
-            daño += 15;
+            //daño += 15;
             VidaActual += 50;
 
             Console.WriteLine($"{nombreTorre} subio al Nivel {nivel}! (Nuevo Daño: {daño}, Nueva Vida: {VidaMaxima})");
