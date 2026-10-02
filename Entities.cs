@@ -20,12 +20,6 @@ namespace Progra2ExamenP1_VisualStudio
             VidaActual = VidaMaxima;
             daño = ObtenerValorFibonacciAleatorio();
         }
-        public Entities()
-        {
-            this.VidaMaxima = ObtenerValorFibonacciAleatorio();
-            this.VidaActual = this.vidaMaxima;
-            this.daño = ObtenerValorFibonacciAleatorio();
-        }
         public virtual void Atacar()
         {
             // ...

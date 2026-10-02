@@ -21,9 +21,9 @@ namespace Progra2ExamenP1_VisualStudio
         public void Execute()
         {
             Console.WriteLine("Bienvenido al juego de torres de defensa.");
+            enemigos.Add(new Enemies());
+            enemigos.Add(new Enemies());
             AbrirMenu();
-            enemigos.Add(new Enemies());
-            enemigos.Add(new Enemies());
         }
         void AbrirMenu()
         {
@@ -145,6 +145,7 @@ namespace Progra2ExamenP1_VisualStudio
         }
         void TerminarTurno()
         {
+            Console.WriteLine("----------------------------------------");
             Console.WriteLine("Turno de las torres.");
             foreach (Tower torre in torresConstruidas)
             {
@@ -156,6 +157,7 @@ namespace Progra2ExamenP1_VisualStudio
                 enemigo.Atacar();
             }
             Console.WriteLine("Turno del Jugador.");
+            Console.WriteLine("----------------------------------------");
 
         }
     }
