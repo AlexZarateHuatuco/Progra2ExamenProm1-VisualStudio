@@ -8,6 +8,7 @@ namespace Progra2ExamenP1_VisualStudio
 {
     internal class Enemies : Entities
     {
+        Game juego;
         private bool estaVivo;
         private bool yaImprimiMuerte;
         private int vecesQueRecibioDaño;
@@ -22,7 +23,7 @@ namespace Progra2ExamenP1_VisualStudio
         public override void Atacar()
         {
             //jugador.VidaActual = jugador.VidaActual - this.daño;
-            //Torre.VidaActual = Torre.VidaActual - this.daño;
+            //Tower.RecibirDaño(Daño);
         }
         public override void RecibirDaño(int cantidad)
         {
@@ -78,6 +79,7 @@ namespace Progra2ExamenP1_VisualStudio
             }
             else if (this.VidaActual == 0)
             {
+                juego.Oro += 10;
                 return false;
             }
             else

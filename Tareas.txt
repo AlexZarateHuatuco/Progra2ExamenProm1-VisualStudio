@@ -1,1 +1,8 @@
-﻿
+﻿Tareas: 
+
+
+Jugador: Alex Zarate
+
+Enemigos: Eduardo Lopez
+
+Torre: Hideki Agarie
